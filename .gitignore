@@ -2,5 +2,7 @@
 .settings
 .project
 .build-logs
+.vscode
 
 target
+resources
