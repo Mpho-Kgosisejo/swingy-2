@@ -3,6 +3,8 @@
 .project
 .build-logs
 .vscode
+.DS_Store
+.factorypath
 
 target
 resources

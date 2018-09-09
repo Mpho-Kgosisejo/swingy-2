@@ -1,4 +1,4 @@
-package mkgosisejo.dataproviders;
+package mkgosisejo.providers.cache;
 
 import mkgosisejo.enums.DataProviderType;
 import mkgosisejo.enums.DisplayMode;

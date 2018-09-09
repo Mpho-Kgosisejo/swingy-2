@@ -1,10 +1,12 @@
 package mkgosisejo.config;
 
 import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.json.simple.JSONObject;
 
-import mkgosisejo.dataproviders.Cache;
+import mkgosisejo.providers.cache.Cache;
 import mkgosisejo.enums.DataProviderType;
 import mkgosisejo.enums.DisplayMode;
 import mkgosisejo.utils.FileHandler;
@@ -14,6 +16,9 @@ public class Config {
     private String config_file_name = "Config.json";
 
     public Config(String[] args){
+        // Silence "org.hibernate.Validator" logs
+        Logger.getLogger("org.hibernate").setLevel(Level.OFF);
+
         this.processArgs(args);
         this.processConfig();
     }
