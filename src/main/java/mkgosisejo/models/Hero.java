@@ -11,8 +11,6 @@ import lombok.Setter;
 import mkgosisejo.enums.Artifacts;
 
 public class Hero {
-    protected int level;
-
     @Setter
     @Getter
     protected int id;
@@ -49,7 +47,7 @@ public class Hero {
     @NotNull
     protected Artifacts artifact;
 
-    public int getLevel(){
-        return this.level;
+    public int getLevel(int xp){
+        return 0;
     }
 }

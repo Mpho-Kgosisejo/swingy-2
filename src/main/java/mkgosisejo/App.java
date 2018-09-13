@@ -22,6 +22,6 @@ public class App
         // }
 
         List<Hero> heros = new DataProvider().getHeros();
-        // SwingyIO.ConsoleOutLine(">> " + heros.size());
+        SwingyIO.ConsoleOutLine(">> " + heros.size());
     }
 }
