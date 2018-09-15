@@ -9,14 +9,19 @@ public class SwingyIO {
         System.out.print(message);
     }
 
+    public static void ConsoleOutLine(){
+        ConsoleOutLine("");
+    }
+
     public static void ConsoleOutLine(String message) {
         ConsoleOut(message + "\n");
     }
 
     public static String ConsoleInput(){
-        String input = null;
         Scanner scanner = new Scanner(System.in);
-
+        String input = null;
+        
+        SwingyIO.ConsoleOut("$> ");
         input = scanner.nextLine();
         // scanner.close();
         return (input);

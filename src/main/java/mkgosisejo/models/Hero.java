@@ -19,7 +19,7 @@ public class Hero {
     @Getter
     @NotNull
     @NotBlank
-    @Size(min = 5, max = 15)
+    @Size(min = 5, max = 10)
     protected String name;
 
     @Setter
@@ -47,7 +47,11 @@ public class Hero {
     @NotNull
     protected Artifacts artifact;
 
-    public int getLevel(int xp){
+    public int getLevel(){
         return 0;
+    }
+
+    public String getType(){
+        return (this.getClass().getSimpleName().substring(4));
     }
 }

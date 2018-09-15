@@ -1,7 +1,10 @@
 package mkgosisejo.providers.cache;
 
+import java.util.List;
+
 import mkgosisejo.enums.DataProviderType;
 import mkgosisejo.enums.DisplayMode;
+import mkgosisejo.models.Hero;
 
 public class Cache {
     public static class Args {
@@ -18,6 +21,6 @@ public class Cache {
     }
 
     public static class Data {
-
+        public static List<Hero> heroList;
     }
 }

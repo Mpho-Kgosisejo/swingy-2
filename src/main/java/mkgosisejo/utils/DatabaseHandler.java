@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import mkgosisejo.config.Config;
+import mkgosisejo.config.ConfigApp;
 import mkgosisejo.providers.cache.Cache;
 
 public class DatabaseHandler {
@@ -15,7 +15,7 @@ public class DatabaseHandler {
     private String _db_stat_mssg = "";
 
     public DatabaseHandler(){
-        this._db_url = "jdbc:sqlite:" + Config.GetPath(Cache.Config.DATABASE_SOURCE_NAME);
+        this._db_url = "jdbc:sqlite:" + ConfigApp.GetPath(Cache.Config.DATABASE_SOURCE_NAME);
 
         this._db_stat = this.buildTables();
     }

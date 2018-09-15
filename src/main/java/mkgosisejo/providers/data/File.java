@@ -3,7 +3,7 @@ package mkgosisejo.providers.data;
 import java.util.ArrayList;
 import java.util.List;
 
-import mkgosisejo.config.Config;
+import mkgosisejo.config.ConfigApp;
 import mkgosisejo.factories.HeroFactory;
 import mkgosisejo.interfaces.IDataProvider;
 import mkgosisejo.models.Hero;
@@ -27,7 +27,7 @@ public class File implements IDataProvider {
         String[] heroFields = null;
         Hero hero = null;
         
-        file = FileHandler.ReadFile(Config.GetPath(Cache.Config.FILE_SOURCE_NAME));
+        file = FileHandler.ReadFile(ConfigApp.GetPath(Cache.Config.FILE_SOURCE_NAME));
         if (file != null){
             fileLines = file.trim().split("\n");
 

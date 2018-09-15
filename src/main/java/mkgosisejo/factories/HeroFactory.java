@@ -49,7 +49,7 @@ public class HeroFactory {
                 return (null);
             }
 
-            hero.setName(name);
+            hero.setName(name.trim());
             hero.setXp(nXP);
             hero.setAttack(nAttack);
             hero.setDefence(nDefence);

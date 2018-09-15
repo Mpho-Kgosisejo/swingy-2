@@ -6,24 +6,26 @@ import java.util.logging.Logger;
 
 import org.json.simple.JSONObject;
 
+import mkgosisejo.providers.DataProvider;
 import mkgosisejo.providers.cache.Cache;
 import mkgosisejo.enums.DataProviderType;
 import mkgosisejo.enums.DisplayMode;
 import mkgosisejo.utils.FileHandler;
 
-public class Config {
+public class ConfigApp {
     public static String ResourcesPath = "resources/";
     private String config_file_name = "Config.json";
 
-    public Config(String[] args){
+    public ConfigApp(String[] args){
         // Silence "org.hibernate.Validator" logs
         Logger.getLogger("org.hibernate").setLevel(Level.OFF);
 
-        this.processArgs(args);
-        this.processConfig();
+        this.processCacheArgs(args);
+        this.processCacheConfig();
+        this.processCacheData();
     }
 
-    private void processArgs(String[] args){
+    private void processCacheArgs(String[] args){
         // Check args if there's "Console" or "GUI"
 
         for (String arg: args) {
@@ -36,7 +38,7 @@ public class Config {
         }
     }
 
-    private void processConfig(){
+    private void processCacheConfig(){
         // Check for the "Config.json"
 
         this.buildConfigFile();
@@ -51,6 +53,10 @@ public class Config {
             Cache.Config.DEFAULT_HERO_IMAGE = (FileHandler.GetJSONObjectValue(jsonObject, "DEFAULT_HERO_IMAGE") != null) ? FileHandler.GetJSONObjectValue(jsonObject, "DEFAULT_HERO_IMAGE") : Cache.Config.DEFAULT_HERO_IMAGE;
             Cache.Config.DEFAULT_ENEMY_IMAGE = (FileHandler.GetJSONObjectValue(jsonObject, "DEFAULT_ENEMY_IMAGE") != null) ? FileHandler.GetJSONObjectValue(jsonObject, "DEFAULT_ENEMY_IMAGE") : Cache.Config.DEFAULT_ENEMY_IMAGE;
         }
+    }
+
+    private void processCacheData(){
+        Cache.Data.heroList = new DataProvider().getHeros();
     }
 
     private void buildConfigFile(){
