@@ -58,7 +58,7 @@ public class SelectHeroController {
             }else{
                 this._view.showErrorMssg(SelectHeroView.STR_UPDATING);
             }
-            AppController.LandingScreen();
+            this.selectHero();
         }
         else if (selection == 4){
             if (this._model.deleteHero(hero) == true){
