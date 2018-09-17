@@ -41,6 +41,7 @@ public class FileHandler {
 
             printWriter.print(data);
             printWriter.close();
+            return (true);
         } catch (Exception e) {}
         return (false);
     }

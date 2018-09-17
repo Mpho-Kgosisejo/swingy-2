@@ -20,6 +20,7 @@ import mkgosisejo.models.HeroRook;
 public class HeroFactory {
     private static String NewHeroStatus = "";
     private static Validator validator;
+    private static int _id = 1;
 
     public static Hero NewHero(String type, String name, String xp, String attack, String defence, String hp, String artifact){
         try {
@@ -49,6 +50,7 @@ public class HeroFactory {
                 return (null);
             }
 
+            hero.setId(_id);
             hero.setName(name.trim());
             hero.setXp(nXP);
             hero.setAttack(nAttack);
@@ -62,6 +64,7 @@ public class HeroFactory {
             }
             if (constraintViolations.size() == 0){
                 NewHeroStatus = "Hero successfully created";
+                _id++;
                 return (hero);
             }
         } catch (Exception e) {

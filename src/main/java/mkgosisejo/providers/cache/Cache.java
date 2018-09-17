@@ -5,6 +5,7 @@ import java.util.List;
 import mkgosisejo.enums.DataProviderType;
 import mkgosisejo.enums.DisplayMode;
 import mkgosisejo.models.Hero;
+import mkgosisejo.providers.DataProvider;
 
 public class Cache {
     public static class Args {
@@ -22,5 +23,9 @@ public class Cache {
 
     public static class Data {
         public static List<Hero> heroList;
+
+        public static void updateHeroList(){
+            Cache.Data.heroList = new DataProvider().getHeros();
+        }
     }
 }

@@ -1,11 +1,14 @@
 package mkgosisejo.controllers;
 
+import mkgosisejo.controllers.console.CreateHeroController;
 import mkgosisejo.controllers.console.LandingScreenController;
 import mkgosisejo.controllers.console.SelectHeroController;
 import mkgosisejo.enums.DisplayMode;
+import mkgosisejo.models.CreateHeroModel;
 import mkgosisejo.models.SelectHeroModel;
 import mkgosisejo.providers.cache.Cache;
 import mkgosisejo.utils.SwingyIO;
+import mkgosisejo.views.console.CreateHeroView;
 import mkgosisejo.views.console.LandingScreenView;
 import mkgosisejo.views.console.SelectHeroView;
 
@@ -30,10 +33,10 @@ public class AppController {
 
     public static void CreateHero(){
         if (Cache.Args.DISPLAY_MODE == DisplayMode.GUI){
-            SwingyIO.GUIOut("GUI().CreateHero()");
+            SwingyIO.ConsoleOutLine("GUI().CreateHero()");
         }
         else{
-            SwingyIO.GUIOut("Console().CreateHero()");
+            new CreateHeroController(new CreateHeroView(), new CreateHeroModel());
         }
     }
 }

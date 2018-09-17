@@ -7,6 +7,10 @@ import mkgosisejo.providers.cache.Cache;
 
 public class SelectHeroModel {
     private DataProvider _dataProvider = null;
+    public static String STR_DELETION = "Deletion";
+    public static String STR_DELETING = "Deleting";
+    public static String STR_UPDATE = "Update";
+    public static String STR_UPDATING = "Updating";
 
     public SelectHeroModel(){
         this._dataProvider = new DataProvider();
@@ -21,10 +25,10 @@ public class SelectHeroModel {
     }    
 
     public boolean updateHero(Hero hero){
-        return (this._dataProvider.updateHero());
+        return (this._dataProvider.updateHero(hero));
     }
 
     public boolean deleteHero(Hero hero){
-        return (this._dataProvider.deleteHero());
+        return (this._dataProvider.deleteHero(hero));
     }
 }

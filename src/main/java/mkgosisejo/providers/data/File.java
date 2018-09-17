@@ -12,12 +12,16 @@ import mkgosisejo.utils.FileHandler;
 import mkgosisejo.utils.SwingyIO;
 
 public class File implements IDataProvider {
-    public File(){
+    public File(){}
 
-    }
+    public boolean insertHero(Hero hero) {
+        String text = "";
 
-    public boolean insertHero() {
-        return false;
+        for (Hero h: Cache.Data.heroList) {
+            text += this.heroRecored(h) + "\n";
+        }
+        text += this.heroRecored(hero);
+        return (FileHandler.WriteFile(ConfigApp.GetPath(Cache.Config.FILE_SOURCE_NAME), text, false));
     }
 
     public List<Hero> getHeros() {
@@ -47,11 +51,23 @@ public class File implements IDataProvider {
         return heroList;
     }
 
-    public boolean updateHero() {
+    public boolean updateHero(Hero hero) {
+        
         return false;
     }
 
-	public boolean deleteHero() {
-		return false;
-	}
+	public boolean deleteHero(Hero hero) {
+        String text = "";
+
+        for (Hero h: Cache.Data.heroList) {
+            if (!h.equals(hero) && h.getId() != hero.getId()){
+                text += this.heroRecored(h) + "\n";
+            }
+        }
+        return (FileHandler.WriteFile(ConfigApp.GetPath(Cache.Config.FILE_SOURCE_NAME), text, false));
+    }
+    
+    private String heroRecored(Hero hero){
+        return (String.format("%s,%s,%s,%s,%s,%s,%s", hero.getType().toUpperCase(), hero.getName(), hero.getXp(), hero.getAttack(), hero.getDefence(), hero.getHp(), hero.getArtifact()));
+    }
 }

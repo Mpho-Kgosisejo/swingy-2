@@ -22,7 +22,7 @@ public class Database implements IDataProvider {
         }
     }
 
-    public boolean insertHero() {
+    public boolean insertHero(Hero hero) {
         return false;
     }
 
@@ -46,11 +46,11 @@ public class Database implements IDataProvider {
         return heroList;
     }
 
-    public boolean updateHero() {
+    public boolean updateHero(Hero hero) {
         return false;
     }
 
-	public boolean deleteHero() {
+	public boolean deleteHero(Hero hero) {
 		return false;
 	}
 }

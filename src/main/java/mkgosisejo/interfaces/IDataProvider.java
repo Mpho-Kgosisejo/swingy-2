@@ -5,8 +5,8 @@ import java.util.List;
 import mkgosisejo.models.Hero;
 
 public interface IDataProvider {
-    public boolean insertHero();
+    public boolean insertHero(Hero hero);
     public List<Hero> getHeros();
-    public boolean updateHero();
-    public boolean deleteHero();
+    public boolean updateHero(Hero hero);
+    public boolean deleteHero(Hero hero);
 }

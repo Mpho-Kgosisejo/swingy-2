@@ -22,19 +22,25 @@ public class DataProvider implements IDataProvider {
         }
     }
 
-    public boolean insertHero() {
-        return (this._dataProvider.insertHero());
+    public boolean insertHero(Hero hero) {
+        boolean status = this._dataProvider.insertHero(hero);
+        Cache.Data.updateHeroList();
+        return (status);
     }
 
     public List<Hero> getHeros() {
         return (this._dataProvider.getHeros());
     }
 
-    public boolean updateHero() {
-        return (this._dataProvider.updateHero());
+    public boolean updateHero(Hero hero) {
+        boolean status = this._dataProvider.updateHero(hero);
+        Cache.Data.updateHeroList();
+        return (status);
     }
 
-	public boolean deleteHero() {
-		return (this._dataProvider.deleteHero());
-	}
+	public boolean deleteHero(Hero hero) {
+        boolean status = this._dataProvider.deleteHero(hero);
+        Cache.Data.updateHeroList();
+		return (status);
+    }
 }
