@@ -3,6 +3,7 @@ package mkgosisejo.views.console;
 import java.util.List;
 
 import mkgosisejo.models.Hero;
+import mkgosisejo.models.SelectHeroModel;
 import mkgosisejo.utils.ConsoleHelper;
 import mkgosisejo.utils.Messages;
 import mkgosisejo.utils.SwingyIO;
@@ -33,13 +34,14 @@ public class SelectHeroView {
     public int showHeroDetails(Hero hero){
         SwingyIO.ConsoleOutLine();
         SwingyIO.ConsoleOutLine("Selected Hero Details:");
-        SwingyIO.ConsoleOutLine(this.getHeroDetailFormat("Name", hero.getName()));
-        SwingyIO.ConsoleOutLine(this.getHeroDetailFormat("Type", hero.getType()));
-        SwingyIO.ConsoleOutLine(this.getHeroDetailFormat("Level", (hero.getLevel() + "(" + hero.getXp() + "XP)")));
-        SwingyIO.ConsoleOutLine(this.getHeroDetailFormat("Artifact", hero.getArtifact().toString()));
-        SwingyIO.ConsoleOutLine(this.getHeroDetailFormat("Attack", Integer.toString(hero.getAttack())));
-        SwingyIO.ConsoleOutLine(this.getHeroDetailFormat("Defence", Integer.toString(hero.getDefence())));
-        SwingyIO.ConsoleOutLine(this.getHeroDetailFormat("Hit Point", (hero.getHp() + "HP")));
+        SwingyIO.ConsoleOutLine(SelectHeroModel.GetHeroDetails(hero));
+        // SwingyIO.ConsoleOutLine(this.getHeroDetailFormat("Name", hero.getName()));
+        // SwingyIO.ConsoleOutLine(this.getHeroDetailFormat("Type", hero.getType()));
+        // SwingyIO.ConsoleOutLine(this.getHeroDetailFormat("Level", (hero.getLevel() + "(" + hero.getXp() + "XP)")));
+        // SwingyIO.ConsoleOutLine(this.getHeroDetailFormat("Artifact", hero.getArtifact().toString()));
+        // SwingyIO.ConsoleOutLine(this.getHeroDetailFormat("Attack", Integer.toString(hero.getAttack())));
+        // SwingyIO.ConsoleOutLine(this.getHeroDetailFormat("Defence", Integer.toString(hero.getDefence())));
+        // SwingyIO.ConsoleOutLine(this.getHeroDetailFormat("Hit Point", (hero.getHp() + "HP")));
 
         SwingyIO.ConsoleOutLine();
         SwingyIO.ConsoleOutLine("1. Start Game (with Selected Hero)");

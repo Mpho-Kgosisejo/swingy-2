@@ -32,6 +32,8 @@ public class CreateHeroController {
         if ((new DataProvider().insertHero(hero)) == true){
             SwingyIO.ConsoleOutLine(HeroFactory.GetNewHeroStatus());
             ConsoleHelper.PressEnterToContinue();
+        }else{
+            SwingyIO.ConsoleOut(CreateHeroModel.ERROR_CREATING_HERO);
         }
         AppController.LandingScreen();
     }

@@ -31,4 +31,21 @@ public class SelectHeroModel {
     public boolean deleteHero(Hero hero){
         return (this._dataProvider.deleteHero(hero));
     }
+
+    public static String GetHeroDetails(Hero hero){
+        String details = "";
+
+        details += getHeroDetailFormat("Name", hero.getName()) + "\n";
+        details += getHeroDetailFormat("Type", hero.getType()) + "\n";
+        details += getHeroDetailFormat("Level", (hero.getLevel() + "(" + hero.getXp() + "XP)")) + "\n";
+        details += getHeroDetailFormat("Artifact", hero.getArtifact().toString()) + "\n";
+        details += getHeroDetailFormat("Attack", Integer.toString(hero.getAttack())) + "\n";
+        details += getHeroDetailFormat("Defence", Integer.toString(hero.getDefence())) + "\n";
+        details += getHeroDetailFormat("Hit Point", (hero.getHp() + "HP"));
+        return (details);
+    }
+
+    private static String getHeroDetailFormat(String title, String text){
+        return (String.format(" %9.9s | %s", title, text));
+    }
 }
