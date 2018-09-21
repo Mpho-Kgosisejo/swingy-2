@@ -7,14 +7,17 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import mkgosisejo.config.ConfigApp;
+import mkgosisejo.models.Hero;
 import mkgosisejo.providers.cache.Cache;
 
 public class DatabaseHandler {
     private String _db_url = null;
     private boolean _db_stat = false;
     private String _db_stat_mssg = "";
+    private String tableName;
 
-    public DatabaseHandler(){
+    public DatabaseHandler(String tableName){
+        this.tableName = tableName;
         this._db_url = "jdbc:sqlite:" + ConfigApp.GetPath(Cache.Config.DATABASE_SOURCE_NAME);
 
         this._db_stat = this.buildTables();
@@ -59,12 +62,12 @@ public class DatabaseHandler {
         return (false);
     }
 
-    public boolean insert(String tableName){
+    public boolean insert(Hero hero){
         boolean stat = false;
 
         try {
             Connection connection = this.getConnection();
-            String sql = "INSERT INTO " + tableName + "(" +
+            String sql = "INSERT INTO " + this.tableName + "(" +
                     "type," +
                     "name," +
                     "xp," +
@@ -75,13 +78,13 @@ public class DatabaseHandler {
                 ") VALUES (?,?,?,?,?,?,?);";
             PreparedStatement pstmt = connection.prepareStatement(sql);
 
-            pstmt.setString(1, "king");
-            pstmt.setString(2, "Mpho");
-            pstmt.setInt(3, 12);
-            pstmt.setInt(4, 13);
-            pstmt.setInt(5, 14);
-            pstmt.setInt(6, 15);
-            pstmt.setString(7, "helm");
+            pstmt.setString(1, hero.getType());
+            pstmt.setString(2, hero.getName());
+            pstmt.setInt(3, hero.getXp());
+            pstmt.setInt(4, hero.getAttack());
+            pstmt.setInt(5, hero.getDefence());
+            pstmt.setInt(6, hero.getHp());
+            pstmt.setString(7, hero.getArtifact().toString());
 
             stat = (pstmt.executeUpdate() > 0);
             connection.close();
@@ -91,12 +94,14 @@ public class DatabaseHandler {
         return (stat);
     }
 
-    public boolean update(String tableName){
+    public boolean update(Hero hero){
+
+
         boolean stat = false;
 
         try {
             Connection connection = this.getConnection();
-            String sql = "UPDATE " + tableName + " SET " +
+            String sql = "UPDATE " + this.tableName + " SET " +
                 "type = ?," +
                 "name = ?," +
                 "xp = ?," +
@@ -107,14 +112,14 @@ public class DatabaseHandler {
                 "WHERE id = ?;";
             PreparedStatement pstmt = connection.prepareStatement(sql);
 
-            pstmt.setString(1, "king");
-            pstmt.setString(2, "Kaygo");
-            pstmt.setInt(3, 22);
-            pstmt.setInt(4, 23);
-            pstmt.setInt(5, 24);
-            pstmt.setInt(6, 25);
-            pstmt.setString(7, "whatever");
-            pstmt.setInt(8, 1);
+            pstmt.setString(1, hero.getType());
+            pstmt.setString(2, hero.getName());
+            pstmt.setInt(3, hero.getXp());
+            pstmt.setInt(4, hero.getAttack());
+            pstmt.setInt(5, hero.getDefence());
+            pstmt.setInt(6, hero.getHp());
+            pstmt.setString(7, hero.getArtifact().toString());
+            pstmt.setInt(8, hero.getId());
 
             stat = (pstmt.executeUpdate() > 0);
             connection.close();
@@ -124,12 +129,12 @@ public class DatabaseHandler {
         return (stat);
     }
 
-    public boolean delete(String tableName, int id){
+    public boolean delete(int id){
         boolean stat = false;
 
         try {
             Connection connection = this.getConnection();
-            String sql = "DELETE FROM " + tableName + " WHERE id = ?";
+            String sql = "DELETE FROM " + this.tableName + " WHERE id = ?";
             PreparedStatement pstmt = connection.prepareStatement(sql); 
 
             pstmt.setInt(1, id);
@@ -141,10 +146,10 @@ public class DatabaseHandler {
         return (stat);
     }
 
-    public ResultSet select(String tableName){
+    public ResultSet select(){
         try {
             Connection connection = this.getConnection();
-            String sql = "SELECT * FROM " + tableName + ";";
+            String sql = "SELECT * FROM " + this.tableName + ";";
             Statement stmt = connection.createStatement();
             ResultSet results = stmt.executeQuery(sql);
             

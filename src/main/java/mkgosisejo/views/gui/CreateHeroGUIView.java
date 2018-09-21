@@ -19,7 +19,7 @@ public class CreateHeroGUIView extends JFrame {
     private JTextField _txtFdName;
     private JComboBox<HeroTypes> _listFdType;
     private JComboBox<Artifacts> _listFdArtifact;
-    
+
     public CreateHeroGUIView(){
         GUIHelper.SetDefaultFrame(this, "Create Hero", 400, 360);
     

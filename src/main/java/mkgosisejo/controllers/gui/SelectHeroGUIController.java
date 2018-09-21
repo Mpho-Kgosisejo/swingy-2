@@ -21,7 +21,7 @@ public class SelectHeroGUIController {
 
         this._view.setBtnCreateHeroListener(new CreateHero());
         this._view.setBtnSelectHeroListener(new SelectHero());
-        this._view.setBtnExitListener(new Exit());
+        this._view.setbtnUpdateHeroListener(new UpdateHero());
         this._view.setListHeroListener(new HeroSelected());
 
         this.initHeroList();
@@ -53,9 +53,18 @@ public class SelectHeroGUIController {
 		}
     }
 
-    private class Exit implements ActionListener {
+    private class UpdateHero implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            _view.dispose();
+            if (_model.getHeroList().size() > 0){
+                SwingyIO.GUIOut("Update hero...");
+
+                AppController.SelectHero();
+                _model.deleteHero(_model.getSelectedHero(_view.getListIndex()));
+
+                _view.dispose();
+            }else{
+                SwingyIO.GUIOut(SelectHeroModel.NO_EXISTING_HEROS);
+            }
 		}
     }
 
@@ -67,6 +76,7 @@ public class SelectHeroGUIController {
                 _view.setHeroNameTitle(hero.getName());
                 _view.setHeroTextDetails(SelectHeroModel.GetHeroDetails(hero));
                 _view.enableSelectHeroBtn();
+                _view.enableUpdateHeroBtn();
             }
         }
 

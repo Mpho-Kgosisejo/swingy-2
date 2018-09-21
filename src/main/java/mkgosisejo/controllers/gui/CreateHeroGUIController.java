@@ -38,12 +38,12 @@ public class CreateHeroGUIController {
         }else{
             if ((new DataProvider().insertHero(hero)) == true){
                 SwingyIO.GUIOut(HeroFactory.GetNewHeroStatus());
-                this._view.dispose();
                 AppController.SelectHero();
             }else{
                 SwingyIO.GUIOut(CreateHeroModel.ERROR_CREATING_HERO);
                 AppController.LandingScreen();
             }
+            this._view.dispose();
         }
     }
     

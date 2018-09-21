@@ -14,7 +14,7 @@ public class Database implements IDataProvider {
     private DatabaseHandler _db = null;
 
     public Database(){
-        this._db = new DatabaseHandler();
+        this._db = new DatabaseHandler("heros");
 
         if (this._db.getDBStat() == false){
             SwingyIO.ConsoleOutLine("Database Error: " + this._db.getDBStatMessage());
@@ -30,7 +30,7 @@ public class Database implements IDataProvider {
         List<Hero> heroList = new ArrayList<Hero>();
         
         try {
-            ResultSet results = this._db.select("heros");
+            ResultSet results = this._db.select();
             Hero hero = null;
 
             if (results != null){
@@ -47,10 +47,10 @@ public class Database implements IDataProvider {
     }
 
     public boolean updateHero(Hero hero) {
-        return false;
+        return this._db.update(hero);
     }
 
 	public boolean deleteHero(Hero hero) {
-		return false;
+		return this._db.delete(hero.getId()             );
 	}
 }

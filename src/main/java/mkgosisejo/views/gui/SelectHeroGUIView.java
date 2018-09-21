@@ -18,7 +18,7 @@ public class SelectHeroGUIView extends JFrame {
     private JPanel panelRightTop;
     private JList<String> lstHeroNames;
     private JButton btnCreateHero;
-    private JButton btnExit;
+    private JButton btnUpdateHero;
     private JLabel lblHeroName;
     private JTextArea txtAHeroInfo;
     private JButton btnSelectHero;
@@ -39,7 +39,8 @@ public class SelectHeroGUIView extends JFrame {
         JPanel panelRightBottom = new JPanel();
         this.lstHeroNames = new JList<String>();
         this.btnCreateHero = new JButton("Create New Hero");
-        this.btnExit = new JButton("Exit");
+        this.btnUpdateHero = new JButton("Update Hero");
+        this.btnUpdateHero.setEnabled(false);
         this.lblHeroName = new JLabel();
         this.txtAHeroInfo = new JTextArea();
         this.btnSelectHero = new JButton("Select Hero");
@@ -60,7 +61,7 @@ public class SelectHeroGUIView extends JFrame {
 
         this.panelRightTop.add(this.lblHeroNameTitle);
         panelLeftControllers.add(this.btnCreateHero);
-        panelLeftControllers.add(this.btnExit);
+        panelLeftControllers.add(this.btnUpdateHero);
         panelLeft.add(this.lstHeroNames);
         panelLeft.add(panelLeftControllers);
         this.panelRightTop.add(this.lblHeroName);
@@ -79,8 +80,8 @@ public class SelectHeroGUIView extends JFrame {
         this.btnCreateHero.addActionListener(listener);
     }
 
-    public void setBtnExitListener(ActionListener listener){
-        this.btnExit.addActionListener(listener);
+    public void setbtnUpdateHeroListener(ActionListener listener){
+        this.btnUpdateHero.addActionListener(listener);
     }
 
     public void setBtnSelectHeroListener(ActionListener listener){
@@ -101,6 +102,10 @@ public class SelectHeroGUIView extends JFrame {
 
     public void setHeroNameTitle(String name){
         this.lblHeroNameTitle.setText(name);
+    }
+
+    public void enableUpdateHeroBtn(){
+        this.btnUpdateHero.setEnabled(true);
     }
 
     public void enableSelectHeroBtn(){

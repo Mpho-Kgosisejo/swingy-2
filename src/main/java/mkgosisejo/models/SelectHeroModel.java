@@ -11,6 +11,7 @@ public class SelectHeroModel {
     public static String STR_DELETING = "Deleting";
     public static String STR_UPDATE = "Update";
     public static String STR_UPDATING = "Updating";
+    public static String NO_EXISTING_HEROS = "There's no existing heros to select";
 
     public SelectHeroModel(){
         this._dataProvider = new DataProvider();

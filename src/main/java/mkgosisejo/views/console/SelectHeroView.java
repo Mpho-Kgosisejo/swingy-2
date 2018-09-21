@@ -11,7 +11,7 @@ import mkgosisejo.utils.SwingyIO;
 public class SelectHeroView {
     public void showNoHerosMssg(){
         SwingyIO.ConsoleOutLine();
-        SwingyIO.ConsoleOutLine("There's no existing heros to select. Try creating a new Hero.");
+        SwingyIO.ConsoleOutLine(SelectHeroModel.NO_EXISTING_HEROS + ". " + "Try creating a new Hero.");
         ConsoleHelper.PressEnterToContinue();
     }
 

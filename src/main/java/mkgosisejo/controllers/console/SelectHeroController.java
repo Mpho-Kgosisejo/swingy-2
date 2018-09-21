@@ -67,8 +67,6 @@ public class SelectHeroController {
     }
 
     private void updateHero(Hero hero){
-        int option = 0;
-
         if (this._model.updateHero(hero) == true){
             this._view.showSuccessMssg(SelectHeroModel.STR_UPDATE);
         }else{
