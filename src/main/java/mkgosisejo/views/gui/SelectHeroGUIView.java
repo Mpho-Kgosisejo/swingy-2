@@ -58,6 +58,7 @@ public class SelectHeroGUIView extends JFrame {
         this.txtAHeroInfo.setEditable(false);
         this.lblHeroNameTitle = new JLabel();
         this.lblHeroNameTitle.setSize(10, 10);
+        // this.lblHeroNameTitle.setFont(new Font("Arial", 30));
 
         this.panelRightTop.add(this.lblHeroNameTitle);
         panelLeftControllers.add(this.btnCreateHero);

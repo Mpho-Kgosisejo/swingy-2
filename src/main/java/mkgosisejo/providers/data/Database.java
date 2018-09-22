@@ -23,7 +23,7 @@ public class Database implements IDataProvider {
     }
 
     public boolean insertHero(Hero hero) {
-        return false;
+        return this._db.insert(hero);
     }
 
     public List<Hero> getHeros() {

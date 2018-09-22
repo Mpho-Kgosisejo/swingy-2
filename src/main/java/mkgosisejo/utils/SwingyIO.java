@@ -39,4 +39,8 @@ public class SwingyIO {
     public static void GUIOut(String message){
         JOptionPane.showMessageDialog(null, message);
     }
+
+    public static boolean GUIConfirm(String message){
+        return (true);
+    }
 }

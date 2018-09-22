@@ -15,6 +15,8 @@ import mkgosisejo.utils.GUIHelper;
 
 public class CreateHeroGUIView extends JFrame {
     private JButton _btnCreateHero;
+    private JButton _btnUpdateHero;
+    private JButton _btnDeleteHero;
     private JButton _btnCanel;
     private JTextField _txtFdName;
     private JComboBox<HeroTypes> _listFdType;
@@ -40,6 +42,8 @@ public class CreateHeroGUIView extends JFrame {
         JLabel _lblLevel = new JLabel("Artifact:");
         this._listFdArtifact = new JComboBox<Artifacts>(Artifacts.values());
         this._btnCreateHero = new JButton("Create Hero");
+        this._btnUpdateHero = new JButton("Update Hero");
+        this._btnDeleteHero = new JButton("Delete Hero");
         this._btnCanel = new JButton("Cancel");
     
         panelMain.setLayout(null);
@@ -61,6 +65,8 @@ public class CreateHeroGUIView extends JFrame {
         panelMid.add(panelTop3);
 
         panelBottom.add(this._btnCreateHero);
+        panelBottom.add(this._btnUpdateHero);
+        panelBottom.add(this._btnDeleteHero);
         panelBottom.add(this._btnCanel);
 
         panelMain.add(panelMid);
@@ -72,9 +78,35 @@ public class CreateHeroGUIView extends JFrame {
     public void setCreateHeroListener(ActionListener listener){
         this._btnCreateHero.addActionListener(listener);
     }
+
+    public void setUpdateHeroListener(ActionListener listener){
+        this._btnUpdateHero.addActionListener(listener);
+    }
+
+    public void setDeleteHeroListener(ActionListener listener){
+        this._btnDeleteHero.addActionListener(listener);
+    }
     
     public void setCancelListener(ActionListener listener){
         this._btnCanel.addActionListener(listener);
+    }
+
+    public void setUpUpdate(int artifact, int heroType){
+        this._btnCreateHero.setVisible(false);
+        this._listFdArtifact.setEnabled(false);
+        this._listFdType.setEnabled(false);
+        this.setTitle("Update Hero");
+        this._listFdArtifact.setSelectedIndex(artifact);
+        this._listFdType.setSelectedIndex(heroType);
+    }
+
+    public void setUpCreate(){
+        this._btnDeleteHero.setVisible(false);
+        this._btnUpdateHero.setVisible(false);
+    }
+
+    public void setHeroName(String name){
+        this._txtFdName.setText(name);
     }
     
     public String getHeroName(){

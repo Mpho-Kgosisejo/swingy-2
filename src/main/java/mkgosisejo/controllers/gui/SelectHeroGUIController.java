@@ -6,9 +6,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import mkgosisejo.controllers.AppController;
+import mkgosisejo.models.CreateHeroModel;
 import mkgosisejo.models.Hero;
 import mkgosisejo.models.SelectHeroModel;
 import mkgosisejo.utils.SwingyIO;
+import mkgosisejo.views.gui.CreateHeroGUIView;
 import mkgosisejo.views.gui.SelectHeroGUIView;
 
 public class SelectHeroGUIController {
@@ -55,21 +57,17 @@ public class SelectHeroGUIController {
 
     private class UpdateHero implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            if (_model.getHeroList().size() > 0){
-                SwingyIO.GUIOut("Update hero...");
-
-                AppController.SelectHero();
-                _model.deleteHero(_model.getSelectedHero(_view.getListIndex()));
-
-                _view.dispose();
-            }else{
-                SwingyIO.GUIOut(SelectHeroModel.NO_EXISTING_HEROS);
-            }
+            _view.dispose();
+            new CreateHeroGUIController(new CreateHeroGUIView(), new CreateHeroModel(_model.getSelectedHero(_view.getListIndex())));
 		}
     }
 
     private class HeroSelected implements MouseListener {
-        public void mouseClicked(MouseEvent e) {
+        public void mouseClicked(MouseEvent e) {}
+
+        public void mousePressed(MouseEvent e) {}
+
+        public void mouseReleased(MouseEvent e) {
             Hero hero = _model.getSelectedHero(_view.getListIndex());
 
             if (hero != null && _view.getListIndex() >= 0){
@@ -79,10 +77,6 @@ public class SelectHeroGUIController {
                 _view.enableUpdateHeroBtn();
             }
         }
-
-        public void mousePressed(MouseEvent e) {}
-
-        public void mouseReleased(MouseEvent e) { }
 
         public void mouseEntered(MouseEvent e) {}
 

@@ -52,7 +52,6 @@ public class File implements IDataProvider {
     }
 
     public boolean updateHero(Hero hero) {
-        
         return false;
     }
 

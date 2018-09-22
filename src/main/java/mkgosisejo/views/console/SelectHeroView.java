@@ -35,13 +35,6 @@ public class SelectHeroView {
         SwingyIO.ConsoleOutLine();
         SwingyIO.ConsoleOutLine("Selected Hero Details:");
         SwingyIO.ConsoleOutLine(SelectHeroModel.GetHeroDetails(hero));
-        // SwingyIO.ConsoleOutLine(this.getHeroDetailFormat("Name", hero.getName()));
-        // SwingyIO.ConsoleOutLine(this.getHeroDetailFormat("Type", hero.getType()));
-        // SwingyIO.ConsoleOutLine(this.getHeroDetailFormat("Level", (hero.getLevel() + "(" + hero.getXp() + "XP)")));
-        // SwingyIO.ConsoleOutLine(this.getHeroDetailFormat("Artifact", hero.getArtifact().toString()));
-        // SwingyIO.ConsoleOutLine(this.getHeroDetailFormat("Attack", Integer.toString(hero.getAttack())));
-        // SwingyIO.ConsoleOutLine(this.getHeroDetailFormat("Defence", Integer.toString(hero.getDefence())));
-        // SwingyIO.ConsoleOutLine(this.getHeroDetailFormat("Hit Point", (hero.getHp() + "HP")));
 
         SwingyIO.ConsoleOutLine();
         SwingyIO.ConsoleOutLine("1. Start Game (with Selected Hero)");
@@ -53,14 +46,10 @@ public class SelectHeroView {
     }
 
     public int showDeleteHero(){
-        SwingyIO.ConsoleOutLine("Are you sure you want to delete hero?");
+        SwingyIO.ConsoleOutLine(Messages.WANT_TO_DELETE_HERO);
         SwingyIO.ConsoleOutLine("1. Yes");
         SwingyIO.ConsoleOutLine("2. No");
         return (SwingyIO.ConsoleInputInt());
-    }
-
-    private String getHeroDetailFormat(String title, String text){
-        return (String.format(" %9.9s | %s", title, text));
     }
 
     public void showErrorMssg(String type){
