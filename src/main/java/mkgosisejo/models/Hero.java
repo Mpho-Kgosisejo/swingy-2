@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import mkgosisejo.enums.Artifacts;
+import mkgosisejo.utils.Formulas;
 
 public class Hero {
     @Setter
@@ -47,11 +48,19 @@ public class Hero {
     @NotNull
     protected Artifacts artifact;
 
+    @Setter
+    @Getter
+    protected Position position;
+
     public int getLevel(){
-        return 0;
+        return Formulas.GetLevel(this.xp);
     }
 
     public String getType(){
         return (this.getClass().getSimpleName().substring(4));
+    }
+
+    public boolean isAlive(){
+        return (this.hp > 0);
     }
 }

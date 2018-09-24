@@ -20,7 +20,9 @@ public class File implements IDataProvider {
         for (Hero h: Cache.Data.heroList) {
             text += this.heroRecored(h) + "\n";
         }
-        text += this.heroRecored(hero);
+        if (hero != null){
+            text += this.heroRecored(hero);
+        }
         return (FileHandler.WriteFile(ConfigApp.GetPath(Cache.Config.FILE_SOURCE_NAME), text, false));
     }
 
@@ -52,7 +54,7 @@ public class File implements IDataProvider {
     }
 
     public boolean updateHero(Hero hero) {
-        return false;
+        return this.insertHero(null);
     }
 
 	public boolean deleteHero(Hero hero) {

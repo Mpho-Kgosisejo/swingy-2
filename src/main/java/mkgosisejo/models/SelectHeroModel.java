@@ -38,7 +38,7 @@ public class SelectHeroModel {
 
         details += getHeroDetailFormat("Name", hero.getName()) + "\n";
         details += getHeroDetailFormat("Type", hero.getType()) + "\n";
-        details += getHeroDetailFormat("Level", (hero.getLevel() + "(" + hero.getXp() + "XP)")) + "\n";
+        details += getHeroDetailFormat("Level", (hero.getLevel() + " (" + hero.getXp() + "XP)")) + "\n";
         details += getHeroDetailFormat("Artifact", hero.getArtifact().toString()) + "\n";
         details += getHeroDetailFormat("Attack", Integer.toString(hero.getAttack())) + "\n";
         details += getHeroDetailFormat("Defence", Integer.toString(hero.getDefence())) + "\n";

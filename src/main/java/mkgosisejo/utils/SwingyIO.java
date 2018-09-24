@@ -17,6 +17,13 @@ public class SwingyIO {
         ConsoleOut(message + "\n");
     }
 
+    public static void ConsoleClear(){
+        final String ANSI_CLS = "\u001b[2J";
+        final String ANSI_HOME = "\u001b[H";
+        ConsoleOut(ANSI_CLS + ANSI_HOME);
+        System.out.flush();
+    }
+
     public static String ConsoleInput(){
         Scanner scanner = new Scanner(System.in);
         String input = null;

@@ -50,7 +50,7 @@ public class SelectHeroController {
         int selection = this._view.showHeroDetails(hero);
 
         if (selection == 1){
-            new GameController();
+            AppController.StartGame(hero);
         }
         else if (selection == 2){
             this.selectHero();
