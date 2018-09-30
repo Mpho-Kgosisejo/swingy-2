@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Random;
 
 import mkgosisejo.controllers.AppController;
+import mkgosisejo.enums.DisplayMode;
 import mkgosisejo.enums.Moves;
 import mkgosisejo.factories.EnemyFactory;
 import mkgosisejo.providers.DataProvider;
 import mkgosisejo.providers.cache.Cache;
-import mkgosisejo.providers.data.Database;
 import mkgosisejo.utils.Formulas;
 
 public class GameModel {
@@ -27,6 +27,7 @@ public class GameModel {
     private boolean _collision = false;
     private Position _oldPosition = null;
     private int _hpCopy;
+    public final static int HEROs_MAX_ENERGY = 100;
 
     public GameModel(Hero hero){
         this._hero = hero;
@@ -38,7 +39,8 @@ public class GameModel {
         this._mapSize = Formulas.MapSize(_hero.getLevel());
         this._enemyList = EnemyFactory.GetEnemyList(this._hero);
         this._hpCopy = this._hero.getHp();
-        _hero.setPosition(new Position((this._mapSize / 2), (this._mapSize / 2)));
+        this._hero.setPosition(new Position((this._mapSize / 2), (this._mapSize / 2)));
+        this._hero.setEnergy(new Integer(HEROs_MAX_ENERGY));
     }
 
     public void drawMap(){
@@ -49,6 +51,10 @@ public class GameModel {
         
         this._map = "";
         this._collision = false;
+
+        if (Cache.Args.DISPLAY_MODE == DisplayMode.GUI){
+            mapChar = "O ";
+        }
 
         for (int x = 0; x < this._mapSize; x++){
             for (int y = 0; y < this._mapSize; y++){
@@ -124,7 +130,7 @@ public class GameModel {
     }
 
     public String getGameTitle(){
-        String text = String.format("Hero: %s %dHP\n", this._hero.getName(), this._hero.getHp());
+        String text = String.format("Hero: %s %dHP (#%3.3s Energy)\n", this._hero.getName(), this._hero.getHp(), this._hero.getEnergy());
         if (Cache.Config.IS_DEVELOPMENT){
             text += String.format("X&Y: %d-%d %d-%d", this._hero.getPosition().getX(), this._mapSize, this._hero.getPosition().getY(), this._mapSize);
         }

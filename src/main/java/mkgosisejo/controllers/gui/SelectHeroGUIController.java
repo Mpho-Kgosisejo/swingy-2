@@ -36,7 +36,7 @@ public class SelectHeroGUIController {
         String[] herosArray = new String[this._model.getHeroList().size()];
 
         for (Hero hero: this._model.getHeroList()) {
-            herosArray[i] = String.format("%d. %10.10s - %6.6s - %s", (i + 1), hero.getName(), hero.getType(), (hero.getLevel() + "(" + hero.getXp() + "XP)"));
+            herosArray[i] = String.format("%d. %10.10s - %6.6s - %s", (i + 1), hero.getName(), hero.getType(), (hero.getLevel() + " (" + hero.getXp() + "XP)"));
             i++;
         }
         this._view.setHeroList(herosArray);
@@ -51,7 +51,8 @@ public class SelectHeroGUIController {
 
     private class SelectHero implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            SwingyIO.ConsoleOutLine("SelectHero{}");
+            _view.dispose();
+            AppController.StartGame(_model.getSelectedHero(_view.getListIndex()));
 		}
     }
 

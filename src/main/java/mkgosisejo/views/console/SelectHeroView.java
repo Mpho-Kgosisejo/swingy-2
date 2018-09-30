@@ -19,9 +19,9 @@ public class SelectHeroView {
         int i = 1;
 
         SwingyIO.ConsoleOutLine();
-        SwingyIO.ConsoleOutLine(String.format("   %10.10s | %6.6s | %s", "HERO NAME", "TYPE", "LEVEL(XP)"));
+        SwingyIO.ConsoleOutLine(String.format("   %10.10s | %6.6s | %s", "HERO NAME", "TYPE", "LEVEL (XP)"));
         for (Hero hero: heros) {
-            SwingyIO.ConsoleOutLine(String.format("%d. %10.10s | %6.6s | %s", i, hero.getName(), hero.getType(), (hero.getLevel() + "(" + hero.getXp() + "XP)")));
+            SwingyIO.ConsoleOutLine(String.format("%d. %10.10s | %6.6s | %s", i, hero.getName(), hero.getType(), (hero.getLevel() + " (" + hero.getXp() + "XP)")));
             i++;
         }
         SwingyIO.ConsoleOutLine();

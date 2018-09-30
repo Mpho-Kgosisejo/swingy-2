@@ -6,6 +6,7 @@ import mkgosisejo.controllers.console.GameController;
 import mkgosisejo.controllers.console.LandingScreenController;
 import mkgosisejo.controllers.console.SelectHeroController;
 import mkgosisejo.controllers.gui.CreateHeroGUIController;
+import mkgosisejo.controllers.gui.FightSimulationGUIController;
 import mkgosisejo.controllers.gui.GameGUIController;
 import mkgosisejo.controllers.gui.LandingScreenGUIController;
 import mkgosisejo.controllers.gui.SelectHeroGUIController;
@@ -63,7 +64,7 @@ public class AppController {
 
     public static void StartSimulation(Hero hero, HeroEnemy enemy){
         if (Cache.Args.DISPLAY_MODE == DisplayMode.GUI){
-            SwingyIO.GUIOut("StartSimulation()");
+            new FightSimulationGUIController(new GameGUIView(), new FightSimulationModel(hero, enemy));
         }else{
             new FightSimulationController(new FightSimulationView(), new FightSimulationModel(hero, enemy));
         }

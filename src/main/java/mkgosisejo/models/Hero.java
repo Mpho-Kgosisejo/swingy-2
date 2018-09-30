@@ -52,6 +52,10 @@ public class Hero {
     @Getter
     protected Position position;
 
+    @Setter
+    @Getter
+    protected int Energy = 0;
+
     public int getLevel(){
         return Formulas.GetLevel(this.xp);
     }
