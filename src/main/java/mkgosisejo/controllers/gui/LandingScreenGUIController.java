@@ -2,8 +2,11 @@ package mkgosisejo.controllers.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import mkgosisejo.controllers.AppController;
+import mkgosisejo.enums.DisplayMode;
 import mkgosisejo.views.gui.LandingScreenGUIView;
 
 public class LandingScreenGUIController {
@@ -15,6 +18,7 @@ public class LandingScreenGUIController {
 
         this._view.setSelectHeroListener(new SelectHeroListener());
         this._view.setCreateHeroListener(new CreateHeroListener());
+        this._view.addWindowListener(new WindowAction());
     }
     
     public class SelectHeroListener implements ActionListener {
@@ -29,5 +33,25 @@ public class LandingScreenGUIController {
             AppController.CreateHero();
             _view.dispose();
         }
+    }
+
+    class WindowAction implements WindowListener {
+        public void windowOpened(WindowEvent e) {}
+
+        public void windowClosing(WindowEvent e) {
+            _view.dispose();
+            DisplayMode.SwitchDisplay();
+            AppController.LandingScreen();
+        }
+
+        public void windowClosed(WindowEvent e) {}
+
+        public void windowIconified(WindowEvent e) {}
+
+        public void windowDeiconified(WindowEvent e) {}
+
+        public void windowActivated(WindowEvent e) {}
+
+        public void windowDeactivated(WindowEvent e) {}
     }
 }

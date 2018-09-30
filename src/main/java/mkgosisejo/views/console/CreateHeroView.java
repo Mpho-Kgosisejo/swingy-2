@@ -2,11 +2,12 @@ package mkgosisejo.views.console;
 
 import mkgosisejo.enums.Artifacts;
 import mkgosisejo.enums.HeroTypes;
+import mkgosisejo.utils.Messages;
 import mkgosisejo.utils.SwingyIO;
 
 public class CreateHeroView {
     public String getName(){
-        SwingyIO.ConsoleOutLine("Enter Hero's NAME (5-10 in length):");
+        SwingyIO.ConsoleOutLine(Messages.ENTER_HERO_NAME);
         return (SwingyIO.ConsoleInput());
     }
 

@@ -27,7 +27,7 @@ public class CreateHeroModel {
         return (HeroFactory.NewHero(type, name, "0", "50", "25", "2500", artifact));
     }
 
-    public boolean IsDuplicate(String heroName){
+    public static boolean IsDuplicate(String heroName){
         for (Hero hero: Cache.Data.heroList) {
             if (hero.getName().equalsIgnoreCase(heroName))
                 return (true);

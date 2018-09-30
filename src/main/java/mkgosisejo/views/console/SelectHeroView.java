@@ -9,6 +9,11 @@ import mkgosisejo.utils.Messages;
 import mkgosisejo.utils.SwingyIO;
 
 public class SelectHeroView {
+    public String getName(){
+        SwingyIO.ConsoleOutLine(Messages.ENTER_HERO_NAME);
+        return (SwingyIO.ConsoleInput());
+    }
+    
     public void showNoHerosMssg(){
         SwingyIO.ConsoleOutLine();
         SwingyIO.ConsoleOutLine(SelectHeroModel.NO_EXISTING_HEROS + ". " + "Try creating a new Hero.");

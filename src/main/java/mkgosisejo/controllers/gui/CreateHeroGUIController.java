@@ -2,9 +2,12 @@ package mkgosisejo.controllers.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import mkgosisejo.controllers.AppController;
 import mkgosisejo.enums.Artifacts;
+import mkgosisejo.enums.DisplayMode;
 import mkgosisejo.enums.HeroTypes;
 import mkgosisejo.factories.HeroFactory;
 import mkgosisejo.models.CreateHeroModel;
@@ -47,7 +50,7 @@ public class CreateHeroGUIController {
 
         if (name == null || (name.length() < 5 || name.length() > 10)){
             SwingyIO.GUIOut(CreateHeroModel.NAME_ERROR + ". " + Messages.PLEASE_TRY_AGAIN);
-        }else if (this._model.IsDuplicate(name)){
+        }else if (CreateHeroModel.IsDuplicate(name)){
             SwingyIO.GUIOut(CreateHeroModel.HERO_EXISTS_ERROR);
         }else{
             if ((new DataProvider().insertHero(hero)) == true){
@@ -64,7 +67,7 @@ public class CreateHeroGUIController {
     private void updateHero(Hero hero){
         String newName = this._view.getHeroName().trim();
 
-        if (this._model.IsDuplicate(newName) == false){
+        if (CreateHeroModel.IsDuplicate(newName) == false){
             hero.setName(newName);
 
             if (newName.length() < 5 || newName.length() > 10){

@@ -18,7 +18,6 @@ import mkgosisejo.models.Hero;
 import mkgosisejo.models.HeroEnemy;
 import mkgosisejo.models.SelectHeroModel;
 import mkgosisejo.providers.cache.Cache;
-import mkgosisejo.utils.SwingyIO;
 import mkgosisejo.views.console.CreateHeroView;
 import mkgosisejo.views.console.FightSimulationView;
 import mkgosisejo.views.console.GameView;

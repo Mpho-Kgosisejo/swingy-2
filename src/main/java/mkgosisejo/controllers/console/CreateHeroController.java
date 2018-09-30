@@ -45,7 +45,7 @@ public class CreateHeroController {
             SwingyIO.ConsoleOutLine(CreateHeroModel.NAME_ERROR + ". " + Messages.PLEASE_TRY_AGAIN);
             ConsoleHelper.PressEnterToContinue();
             return (this.getName());
-        }else if (this._model.IsDuplicate(name)){
+        }else if (CreateHeroModel.IsDuplicate(name)){
             SwingyIO.ConsoleOutLine(CreateHeroModel.HERO_EXISTS_ERROR);
             ConsoleHelper.PressEnterToContinue();
             return (this.getName());

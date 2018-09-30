@@ -2,9 +2,12 @@ package mkgosisejo.controllers.console;
 
 import mkgosisejo.controllers.AppController;
 import mkgosisejo.enums.DisplayMode;
+import mkgosisejo.models.CreateHeroModel;
 import mkgosisejo.models.Hero;
 import mkgosisejo.models.SelectHeroModel;
 import mkgosisejo.utils.ConsoleHelper;
+import mkgosisejo.utils.Messages;
+import mkgosisejo.utils.SwingyIO;
 import mkgosisejo.views.console.SelectHeroView;
 
 public class SelectHeroController {
@@ -67,12 +70,29 @@ public class SelectHeroController {
     }
 
     private void updateHero(Hero hero){
+        hero.setName(this.getName());
+
         if (this._model.updateHero(hero) == true){
             this._view.showSuccessMssg(SelectHeroModel.STR_UPDATE);
         }else{
             this._view.showErrorMssg(SelectHeroModel.STR_UPDATING);
         }
         AppController.LandingScreen();
+    }
+
+    private String getName(){
+        String name = this._view.getName().trim();
+
+        if (name.length() < 5 || name.length() > 10){
+            SwingyIO.ConsoleOutLine(CreateHeroModel.NAME_ERROR + ". " + Messages.PLEASE_TRY_AGAIN);
+            ConsoleHelper.PressEnterToContinue();
+            return (this.getName());
+        }else if (CreateHeroModel.IsDuplicate(name)){
+            SwingyIO.ConsoleOutLine(CreateHeroModel.HERO_EXISTS_ERROR);
+            ConsoleHelper.PressEnterToContinue();
+            return (this.getName());
+        }
+        return (name);
     }
 
     private void deleteHero(Hero hero){

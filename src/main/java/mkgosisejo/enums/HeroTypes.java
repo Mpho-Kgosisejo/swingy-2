@@ -1,7 +1,5 @@
 package mkgosisejo.enums;
 
-import mkgosisejo.utils.SwingyIO;
-
 public enum HeroTypes {
     KING,
     KNIGHT,

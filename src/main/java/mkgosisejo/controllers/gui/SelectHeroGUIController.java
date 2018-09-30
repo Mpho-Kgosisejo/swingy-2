@@ -4,14 +4,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import mkgosisejo.controllers.AppController;
 import mkgosisejo.models.CreateHeroModel;
 import mkgosisejo.models.Hero;
 import mkgosisejo.models.SelectHeroModel;
-import mkgosisejo.utils.SwingyIO;
 import mkgosisejo.views.gui.CreateHeroGUIView;
 import mkgosisejo.views.gui.SelectHeroGUIView;
+import mkgosisejo.enums.DisplayMode;
 
 public class SelectHeroGUIController {
     private SelectHeroGUIView _view;
@@ -25,6 +27,7 @@ public class SelectHeroGUIController {
         this._view.setBtnSelectHeroListener(new SelectHero());
         this._view.setbtnUpdateHeroListener(new UpdateHero());
         this._view.setListHeroListener(new HeroSelected());
+        this._view.addWindowListener(new WindowAction());
 
         this.initHeroList();
 
@@ -82,5 +85,25 @@ public class SelectHeroGUIController {
         public void mouseEntered(MouseEvent e) {}
 
         public void mouseExited(MouseEvent e) {}
+    }
+
+    class WindowAction implements WindowListener {
+        public void windowOpened(WindowEvent e) {}
+
+        public void windowClosing(WindowEvent e) {
+            _view.dispose();
+            DisplayMode.SwitchDisplay();
+            AppController.SelectHero();
+        }
+
+        public void windowClosed(WindowEvent e) {}
+
+        public void windowIconified(WindowEvent e) {}
+
+        public void windowDeiconified(WindowEvent e) {}
+
+        public void windowActivated(WindowEvent e) {}
+
+        public void windowDeactivated(WindowEvent e) {}
     }
 }

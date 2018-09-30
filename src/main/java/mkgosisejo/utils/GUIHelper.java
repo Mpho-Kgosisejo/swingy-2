@@ -12,7 +12,7 @@ public class GUIHelper {
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         FixFrameSize(frame, width, height);
-        frame.addWindowListener(new WindowAction());
+        // frame.addWindowListener(new WindowAction());
     }
 
     public static void FixFrameSize(JFrame frame, int width, int height){
