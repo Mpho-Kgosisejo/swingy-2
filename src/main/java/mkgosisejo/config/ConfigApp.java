@@ -50,6 +50,7 @@ public class ConfigApp {
             Cache.Config.DATA_PROVIDER_TYPE = (DataProviderType.getEnumValue(FileHandler.GetJSONObjectValue(jsonObject, "DATA_PROVIDER_TYPE")) != null) ? DataProviderType.getEnumValue(FileHandler.GetJSONObjectValue(jsonObject, "DATA_PROVIDER_TYPE").toString()) : Cache.Config.DATA_PROVIDER_TYPE;
             Cache.Config.FILE_SOURCE_NAME = (FileHandler.GetJSONObjectValue(jsonObject, "FILE_SOURCE_NAME") != null) ? FileHandler.GetJSONObjectValue(jsonObject, "FILE_SOURCE_NAME") : Cache.Config.FILE_SOURCE_NAME;
             Cache.Config.DATABASE_SOURCE_NAME = (FileHandler.GetJSONObjectValue(jsonObject, "DATABASE_SOURCE_NAME") != null) ? FileHandler.GetJSONObjectValue(jsonObject, "DATABASE_SOURCE_NAME") : Cache.Config.DATABASE_SOURCE_NAME;
+            Cache.Config.WEB_REQUEST_URL = (FileHandler.GetJSONObjectValue(jsonObject, "WEB_REQUEST_URL") != null) ? FileHandler.GetJSONObjectValue(jsonObject, "WEB_REQUEST_URL") : Cache.Config.WEB_REQUEST_URL;
             Cache.Config.DEFAULT_HERO_IMAGE = (FileHandler.GetJSONObjectValue(jsonObject, "DEFAULT_HERO_IMAGE") != null) ? FileHandler.GetJSONObjectValue(jsonObject, "DEFAULT_HERO_IMAGE") : Cache.Config.DEFAULT_HERO_IMAGE;
             Cache.Config.DEFAULT_ENEMY_IMAGE = (FileHandler.GetJSONObjectValue(jsonObject, "DEFAULT_ENEMY_IMAGE") != null) ? FileHandler.GetJSONObjectValue(jsonObject, "DEFAULT_ENEMY_IMAGE") : Cache.Config.DEFAULT_ENEMY_IMAGE;
         }
@@ -71,6 +72,7 @@ public class ConfigApp {
             config += "DATA_PROVIDER_TYPE: " + Cache.Config.DATA_PROVIDER_TYPE + "\n";
             config += "FILE_SOURCE_NAME: " + Cache.Config.FILE_SOURCE_NAME + "\n";
             config += "DATABASE_SOURCE_NAME: " + Cache.Config.DATABASE_SOURCE_NAME + "\n";
+            config += "WEB_REQUEST_URL: " + Cache.Config.WEB_REQUEST_URL + "\n";
             config += "DEFAULT_HERO_IMAGE: " + Cache.Config.DEFAULT_HERO_IMAGE + "\n";
             config += "DEFAULT_ENEMY_IMAGE: " + Cache.Config.DEFAULT_ENEMY_IMAGE;
             

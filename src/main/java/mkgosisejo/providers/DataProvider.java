@@ -7,6 +7,7 @@ import mkgosisejo.models.Hero;
 import mkgosisejo.providers.cache.Cache;
 import mkgosisejo.providers.data.Database;
 import mkgosisejo.providers.data.File;
+import mkgosisejo.providers.data.WebRequest;
 
 public class DataProvider implements IDataProvider {
     private IDataProvider _dataProvider = null;
@@ -18,6 +19,9 @@ public class DataProvider implements IDataProvider {
             break;
             case FILE:
                 this._dataProvider = new File();
+            break;
+            case WEB:
+                this._dataProvider = new WebRequest();
             break;
         }
     }

@@ -17,6 +17,7 @@ public class Cache {
         public static DataProviderType DATA_PROVIDER_TYPE = DataProviderType.FILE;
         public static String FILE_SOURCE_NAME = "data.txt";
         public static String DATABASE_SOURCE_NAME = "data.sql";
+        public static String WEB_REQUEST_URL = "Nan";
         public static String DEFAULT_HERO_IMAGE = "src/main/java/mkgosisejo/images/default-hero-image.png";
         public static String DEFAULT_ENEMY_IMAGE = "src/main/java/mkgosisejo/images/default-enemy-image.png";
     }

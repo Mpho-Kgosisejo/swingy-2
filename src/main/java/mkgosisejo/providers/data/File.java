@@ -12,7 +12,15 @@ import mkgosisejo.utils.FileHandler;
 import mkgosisejo.utils.SwingyIO;
 
 public class File implements IDataProvider {
-    public File(){}
+    private String _file;
+
+    public File(){
+        this._file = FileHandler.ReadFile(ConfigApp.GetPath(Cache.Config.FILE_SOURCE_NAME));
+    }
+
+    public File(String file){
+        this._file = file;
+    }
 
     public boolean insertHero(Hero hero) {
         String text = "";
@@ -28,14 +36,12 @@ public class File implements IDataProvider {
 
     public List<Hero> getHeros() {
         List<Hero> heroList = new ArrayList<Hero>();
-        String file = null;
         String[] fileLines = null;
         String[] heroFields = null;
         Hero hero = null;
         
-        file = FileHandler.ReadFile(ConfigApp.GetPath(Cache.Config.FILE_SOURCE_NAME));
-        if (file != null){
-            fileLines = file.trim().split("\n");
+        if (this._file != null){
+            fileLines = this._file.trim().split("\n");
 
             for (String line: fileLines) {
                 heroFields = line.trim().split(",");

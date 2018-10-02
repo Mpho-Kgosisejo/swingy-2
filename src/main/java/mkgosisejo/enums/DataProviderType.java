@@ -2,7 +2,8 @@ package mkgosisejo.enums;
 
 public enum DataProviderType {
     FILE,
-    DATABASE;
+    DATABASE,
+    WEB;
 
     public static DataProviderType getEnumValue(String value){
         try {
