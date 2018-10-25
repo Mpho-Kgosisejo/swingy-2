@@ -14,4 +14,5 @@ public class Messages {
     public static String ERROR_DELETE_HERO = "Error Deleting hero";
     public static String WANT_TO_DELETE_HERO = "Are you sure you want to delete hero?";
     public static String ENTER_HERO_NAME = "Enter Hero's NAME (5-10 in length):";
+    public static String ERROR_SAVING_HERO_STATS = "Error saving hero stats... d(-_-)b";
 }

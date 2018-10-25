@@ -2,6 +2,7 @@ package mkgosisejo.models;
 
 import java.util.List;
 import java.util.Random;
+import java.util.logging.ConsoleHandler;
 
 import mkgosisejo.controllers.AppController;
 import mkgosisejo.enums.DisplayMode;
@@ -9,7 +10,10 @@ import mkgosisejo.enums.Moves;
 import mkgosisejo.factories.EnemyFactory;
 import mkgosisejo.providers.DataProvider;
 import mkgosisejo.providers.cache.Cache;
+import mkgosisejo.utils.ConsoleHelper;
 import mkgosisejo.utils.Formulas;
+import mkgosisejo.utils.Messages;
+import mkgosisejo.utils.SwingyIO;
 
 public class GameModel {
     public static String YOU_HAVE_ENCOUNTERED_AN_ENEMY = "You have encountered an enemy";
@@ -126,7 +130,15 @@ public class GameModel {
     public void restoreHero(){
         this._hero.setHp(this._hpCopy);
         this.rewardHero();
-        new DataProvider().updateHero(this._hero);
+
+        if ((new DataProvider().updateHero(this._hero)) == false){
+            if (Cache.Args.DISPLAY_MODE == DisplayMode.GUI){
+                SwingyIO.GUIOut(Messages.ERROR_SAVING_HERO_STATS);
+            }else{
+                SwingyIO.ConsoleOutLine(Messages.ERROR_SAVING_HERO_STATS);
+                ConsoleHelper.PressEnterToContinue();
+            }
+        }
     }
 
     public String getGameTitle(){
